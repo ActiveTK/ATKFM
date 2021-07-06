@@ -2,7 +2,7 @@
   /////////////////////////////////////////////////
   define('fmversion', 'v1.1.3');
   define('lastupdateinfo', '2021/07/06 - Jul (Tue) 22:34:51');
-  define('publishupdateinfo', '2021/06/30 - Jun (Sat) 12:27:12');
+  define('publishupdateinfo', '2021/07/06 - Jul (Tue) 22:35:43');
   define('copyright',
     "Copyright &copy; 2021 ActiveTK. All rights reserved.\n".
     "Released under the <a href='https://license.activetk.cf/?project=atk-fm'>ActiveTK Projects license</a>"
