@@ -1,7 +1,7 @@
-<?php // been updated automatically on 2021/08/01 - Aug (Sun) 16:32:29(UNIXTIME:1627803149) from https://www.activetk.cf/ATK-FM/update/go/1.1.5.php
+<?php // been updated automatically on 2021/08/01 - Aug (Sun) 16:56:49(UNIXTIME:1627804609) from https://www.activetk.cf/ATK-FM/update/go/1.1.5.php
   /////////////////////////////////////////////////
   define('fmversion', 'v1.1.5');
-  define('lastupdateinfo', '2021/08/01 - Aug (Sun) 16:32:29');
+  define('lastupdateinfo', '2021/08/01 - Aug (Sun) 16:56:49');
   define('publishupdateinfo', '2021/08/01 - Aug (Sun) 16:26:04');
   define('copyright',
     "Copyright &copy; 2021 ActiveTK. All rights reserved.\n".
@@ -260,8 +260,8 @@
         mkdir(dirname(__FILE__) . "/ATK-FM");
       if (file_exists(__DIR__ . "/ATK-FM/password.txt"))
         unlink(__DIR__ . "/ATK-FM/password.txt");
-      $pw = $_POST['password'];
-      file_put_contents(dirname(__FILE__) . "/ATK-FM/config.php", "<?php \n\n  define('config_load', true);\n  define('fm_password', '{$pw}');\n  define('fm_password_md5', '".md5($pw)."');\n\n");
+      $pw = md5($_POST['password']);
+      file_put_contents(dirname(__FILE__) . "/ATK-FM/config.php", "<?php \n\n  define('config_load', true);\n  define('fm_password_md5', '".$pw."');\n\n");
       file_put_contents(dirname(__FILE__) . "/ATK-FM/lastupdate.txt", "NONE");
       $_SESSION["login"] = $pw;
       $_SESSION["cd"] = realpath(null) . "/";
@@ -280,7 +280,7 @@
       {
         exit("<!-- ".time()." -->\n<p>LoginError: セッション切れが発生しました。</p>\n");
       }
-      if (md5(fm_password . $_SESSION["logincode"]) == $_POST["_trykey"])
+      if (md5(fm_password_md5 . $_SESSION["logincode"]) == $_POST["_trykey"])
       {
         $_SESSION["login"] = fm_password_md5;
         $_SESSION["cd"] = realpath(null) . "/";
@@ -288,26 +288,21 @@
       else
         exit("<!-- ".time()." -->\n<p>LoginError: パスワードが違います</p>\n");
     }
-    else if ($_POST['password'] == fm_password)
-    {
-      $_SESSION["login"] = fm_password_md5;
-      $_SESSION["cd"] = realpath(null) . "/";
-    }
     else
-      exit("<!-- ".time()." -->\n<p>LoginError: パスワードが違います</p>\n");
+      exit("<!-- ".time()." -->\n<p>LoginError: ログインするにはお使いのブラウザのJavaScriptを有効にしてください。</p>\n");
   }
   else ViewLoginForm();
   if (isset($_POST["save-password"]))
   {
-    $pw = $_POST['passwordnew'];
-    if ($_POST['passwordold'] == fm_password)
+    $pw = md5($_POST['passwordnew']);
+    if ($pw == fm_password_md5)
     {
-      file_put_contents(dirname(__FILE__) . "/ATK-FM/config.php", "<?php \n\n  define('config_load', true);\n  define('fm_password', '{$pw}');\n  define('fm_password_md5', '".md5($pw)."');\n\n");
-      $_SESSION["login"] = md5($pw);
+      file_put_contents(dirname(__FILE__) . "/ATK-FM/config.php", "<?php \n\n  define('config_load', true);\n  define('fm_password_md5', '".md5($pw)."');\n\n");
+      $_SESSION["login"] = $pw;
       exit("パスワードを保存しました。");
     }
     else
-      exit("元のパスワードが違う為、パスワードを変更出来ませんでした。<br>\nパスワードを忘れた場合には、「ATK-FM」フォルダーを削除してください。");
+      exit("元のパスワードが違う為、パスワードを変更出来ませんでした。<br>\nパスワードを忘れた場合には、「ATK-FM/config.php」を削除してください。");
   }
   if (isset($_POST["password-reset"])) ViewPasswordResetForm();
   if (isset($_GET["checkupdate"]))
@@ -605,7 +600,7 @@
     <style>a{color: #00ff00;position: relative;display: inline-block;transition: .3s;}a::after {position: absolute;bottom: 0;left: 50%;content: '';width: 0;height: 2px;background-color: #31aae2;transition: .3s;transform: translateX(-50%);}a:hover::after{width: 100%;}</style>
     <?php ViewActiveTKJS(); ?>
     <script type="text/javascript">
-    function CSubmit(){return""==_("password").value?(alert("パスワードを入力してください"),!1):(_("login").disabled="true",_("login").value="ログインしています。。",_("_trykey").value=CybozuLabs.MD5.calc(_("password").value+"<?=$_SESSION['logincode']?>"),_("password").value="",!0)}
+    function CSubmit(){return""==_("password").value?(alert("パスワードを入力してください"),!1):(_("login").disabled="true",_("login").value="ログインしています。。",_("_trykey").value=CybozuLabs.MD5.calc(CybozuLabs.MD5.calc(_("password").value)+"<?=$_SESSION['logincode']?>"),_("password").value="",!0)}
     </script>
   </head>
   <body style="background-color:#e6e6fa;text:#363636;">
