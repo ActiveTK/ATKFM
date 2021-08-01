@@ -1,7 +1,7 @@
-<?php // been updated automatically on 2021/08/01 - Aug (Sun) 16:56:49(UNIXTIME:1627804609) from https://www.activetk.cf/ATK-FM/update/go/1.1.5.php
+<?php // been updated automatically on 2021/08/01 - Aug (Sun) 17:09:09(UNIXTIME:1627805349) from https://www.activetk.cf/ATK-FM/update/go/1.1.5.php
   /////////////////////////////////////////////////
   define('fmversion', 'v1.1.5');
-  define('lastupdateinfo', '2021/08/01 - Aug (Sun) 16:56:49');
+  define('lastupdateinfo', '2021/08/01 - Aug (Sun) 17:09:09');
   define('publishupdateinfo', '2021/08/01 - Aug (Sun) 16:26:04');
   define('copyright',
     "Copyright &copy; 2021 ActiveTK. All rights reserved.\n".
@@ -224,7 +224,7 @@
     return true;
   }
   function MakeLog() {
-    if (!file_exists(dirname(__FILE__) . "/ATK-FM/password.txt"))
+    if (!file_exists(dirname(__FILE__) . "/ATK-FM/config.php"))
       return false;
     $logfile = dirname(__FILE__) . "/ATK-FM/.access_log.php";
     if (!file_exists($logfile))
