@@ -297,7 +297,7 @@
     $pw = md5($_POST['passwordnew']);
     if ($pw == fm_password_md5)
     {
-      file_put_contents(dirname(__FILE__) . "/ATK-FM/config.php", "<?php \n\n  define('config_load', true);\n  define('fm_password_md5', '".md5($pw)."');\n\n");
+      file_put_contents(dirname(__FILE__) . "/ATK-FM/config.php", "<?php \n\n  define('config_load', true);\n  define('fm_password_md5', '{$pw}');\n\n");
       $_SESSION["login"] = $pw;
       exit("パスワードを保存しました。");
     }
