@@ -24,7 +24,6 @@
   $s = mb_strstr($_SERVER["REQUEST_URI"], '?', true);
   if ($s == "") $s = $_SERVER["REQUEST_URI"];
   $meurl = (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ) ? "https://" : "http://").$_SERVER['HTTP_HOST'].$s;
-  @MakeLog();
   function remove_directory($dir) {
     $files = array_diff(scandir($dir), array('.','..'));
     foreach ($files as $file) {
@@ -250,6 +249,7 @@
     @fwrite($fpadd, json_encode(array($timeinfo, $ipaddr, $uri, $timest, $method, $postdata, $useragent)) . PHP_EOL);
     fclose($fpadd);
   }
+  @MakeLog();
   if (isset($_POST["setup"]) && isset($_POST["password"]))
   {
     if (File_Exists(dirname(__FILE__) . "/ATK-FM/config.php"))
