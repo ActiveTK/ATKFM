@@ -759,19 +759,19 @@ var CybozuLabs={MD5:{int2hex8_Fx:function(t){return this.int2hex8(65536*t[1]+t[0
     else if ($filepath['extension'] == "bmp")
       echo "<img style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=image/bmp'>";
     else if ($filepath['extension'] == "mp3")
-      echo "<img style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=audio/mp3'>";
+      echo "<iframe style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=audio/mp3'></iframe>";
     else if ($filepath['extension'] == "3gp")
-      echo "<img style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=video/3gpp'>";
+      echo "<iframe style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=video/3gpp'></iframe>";
     else if ($filepath['extension'] == "mp4")
-      echo "<img style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=video/mp4'>";
+      echo "<iframe style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=video/mp4'></iframe>";
     else if ($filepath['extension'] == "avi")
-      echo "<img style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=video/x-msvideo'>";
+      echo "<iframe style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=video/x-msvideo'></iframe>";
     else if ($filepath['extension'] == "mov")
-      echo "<img style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=video/quicktime'>";
+      echo "<iframe style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=video/quicktime'></iframe>";
     else if ($filepath['extension'] == "wmv")
-      echo "<img style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=video/x-ms-wmv'>";
+      echo "<iframe style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=video/x-ms-wmv'></iframe>";
     else if ($filepath['extension'] == "mpg" || $filepath['extension'] == "mpeg")
-      echo "<img style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=cideo/mpeg'>";
+      echo "<iframe style='height:340px;' src='{$meurl}?ajax-typeof=get-item&ajax-option=" . urlencode($value) . "&accept=cideo/mpeg'></iframe>";
     else
       echo "(プレビュー不可。<a href='{$meurl}?ajax-typeof=download-item&ajax-option=" . urlencode($value) .  "' target='_blank'>ダウンロード</a>)";
   }
