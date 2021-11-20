@@ -1109,11 +1109,7 @@ var CybozuLabs={MD5:{int2hex8_Fx:function(t){return this.int2hex8(65536*t[1]+t[0
                     _("server-data").innerHTML += "<img src='" + atkfm.images.fzimage + "' style='width:22px;height:22px;'>" + o +
                       '(zip)<a href=\'javascript:_("directory-root").value="' + n + "\";atkfm.GetFileList();'><input type='button' value='プレビュー'></a>" +
                       "<a href='javascript:atkfm.OpenZip(\""+n+"\");'><input type='button' value='展開'></a>" +
-                      "<a href='javascript:atkfm.FileRemove(\"" + n + "\");'><input type='button' value='削除'></a>" +
-                      "<a href='<?=$meurl?>?ajax-typeof=download-item&ajax-option="+encodeURIComponent(n)+"'><input type='button' value='ダウンロード'></a>" +
-                      "<a href='javascript:atkfm.RenameItem(\""+n+"\");'><input type='button' value='リネーム'></a>" +
-                      "<a href='javascript:atkfm.CopyItem(\"" + n +"\");'><input type='button' value='コピー'></a>" +
-                      "<a href='javascript:atkfm.GetSize(\""+n+"\");'><input type='button' value='容量取得'></a><br>";
+                      "<a href='javascript:atkfm.edit(\""+n+"\");'><input type='button' value='操作'></a><br>";
                   else if ("d" == t)
                     _("server-data").innerHTML += "<img src='" + atkfm.images.fzimagein + "' style='width:22px;height:22px;'> " + o +
                       "(zip内ファイル)<a href='<?=$meurl?>?ajax-typeof=get-item-zip&ajax-option=" + encodeURIComponent(_("directory-root").value) +
